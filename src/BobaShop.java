@@ -6,8 +6,8 @@ public class BobaShop {
     private String drink;
     private String topping;
     private boolean randomBoba;
-    double price1;
-    double price2;
+    private double price1;
+    private double price2;
 
     // constructor
     public BobaShop(String drink) {
