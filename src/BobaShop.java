@@ -19,7 +19,7 @@ public class BobaShop {
         // Randomly select a drink and toppings
         drink = "";
         topping = "";
-        int randomDrink = (int) (Math.random() * 4);
+        int randomDrink = (int) (Math.random() * 4) + 1;
         if (randomDrink == 1) {
             drink = "Milk Tea";
         } else if (randomDrink == 2) {
@@ -29,7 +29,7 @@ public class BobaShop {
         } else {
             drink = "Thai Tea";
         }
-        int randomTopping = (int) (Math.random() * 3);
+        int randomTopping = (int) (Math.random() * 3) + 1;
         if (randomTopping == 1) {
             topping = "Pearls";
         } else if (randomTopping == 2) {
@@ -38,7 +38,7 @@ public class BobaShop {
             topping = "Pudding";
         }
         randomBoba = true;
-        System.out.println("Your Randomized Boba Order: " + drink + " with " + topping);
+        System.out.println(toString());
         }
 
     // void method with no parameters which allows user to add toppings
@@ -100,5 +100,10 @@ public class BobaShop {
         } else {
             System.out.println("You lost :(");
         }
+    }
+
+    public String toString() {
+        String returnString = "Your Randomized Boba Order: " + drink + " with " + topping;
+        return returnString;
     }
 }
