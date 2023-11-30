@@ -56,16 +56,16 @@ public class BobaShop {
             return price1;
         } else {
             if (!(topping.equals("N/A"))) {
-                price2 = drinkPrice + toppingPrice;
+                price2 = (drinkPrice + toppingPrice) * numOfDrinks;
+                return price2;
             } else {
-                price2 = drinkPrice;
+                price2 = drinkPrice * numOfDrinks;
+                return price2;
             }
         }
-        price2 = price2 * numOfDrinks;
-        return price2;
     }
 
-    public void wordScramble(String originalWord) {
+    public void wordScramble(String originalWord, double price1, double price2) {
         String word = originalWord;
         String scrambled = "";
         for (int i = word.length(); i > 0; i--) {
