@@ -16,7 +16,7 @@ public class BobaShop {
 
     // overloaded constructor
     public BobaShop() {
-        // Randomly select a drink and toppings
+        // Randomly select a drink and toppings and stores it in the Strings
         drink = "";
         topping = "";
         int randomDrink = (int) (Math.random() * 4) + 1;
@@ -41,13 +41,15 @@ public class BobaShop {
         System.out.println(toString());
         }
 
-    // void method with no parameters which allows user to add toppings
+    // void method with no parameters which allows user to add toppings if they want
     public void addToppings() {
         Scanner scan = new Scanner(System.in);
         System.out.print("The drink you want is " + drink +"\nWhat toppings do you want to add to your personalized order? (If no toppings, type N/A): ");
         topping = scan.nextLine();
     }
 
+    // method which calculates the total price of the boba order based on how many drinks the user wants
+    // has one parameter which represents the number of drinks the user wants to order
     public double calculatePrice(int numOfDrinks) {
         double drinkPrice = 5.50;
         double toppingPrice = 0.50;
@@ -65,6 +67,11 @@ public class BobaShop {
         }
     }
 
+    // this void method has three parameters: a String for the word that will be scrambled,
+    // and the prices of the random order and personalized order
+    // this method scrambles the word then asks the user if they want to play the game. If the
+    // user says yes, the user gets 5 tries to guess the word and if they win they get a discount
+    // and the method will print the discounted prices
     public void wordScramble(String originalWord, double price1, double price2) {
         String word = originalWord;
         String scrambled = "";
@@ -81,27 +88,34 @@ public class BobaShop {
             }
             word = before + after;
         }
-        System.out.println("Scrambled Word: " + scrambled);
 
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Your Guess: ");
-        String guess = scan.nextLine();
-        int count = 1;
-        while ((!(guess.equals(originalWord))) && (count <= 4)) {
-            System.out.println("Guesses Left: " + (5 - count));
-            System.out.print("That's not it! Guess again: ");
-            guess = scan.nextLine();
-            count++;
-        }
-        if ((guess.equals(originalWord)) && (count <= 5)) {
-            System.out.println("You won a 50% discount!");
-            System.out.println("The new price of your random order is: $" + price1/2.0);
-            System.out.println("The new price of your personal order is: $" + price2/2.0);
+        Scanner scan = new Scanner (System.in);
+        System.out.print("Do you want to play a game of Word Scramble to win a 50% discount? ");
+        String choice = scan.nextLine();
+        if (choice.equals("yes")) {
+            System.out.println("Scrambled Word: " + scrambled);
+            System.out.print("Your Guess: ");
+            String guess = scan.nextLine();
+            int count = 1;
+            while ((!(guess.equals(originalWord))) && (count <= 4)) {
+                System.out.println("Guesses Left: " + (5 - count));
+                System.out.print("That's not it! Guess again: ");
+                guess = scan.nextLine();
+                count++;
+            }
+            if ((guess.equals(originalWord)) && (count <= 5)) {
+                System.out.println("You won a 50% discount!");
+                System.out.println("The new price of your random order is: $" + price1/2.0);
+                System.out.println("The new price of your personal order is: $" + price2/2.0);
+            } else {
+                System.out.println("You lost :(");
+            }
         } else {
-            System.out.println("You lost :(");
+            System.out.println("Okay, have a good day.");
         }
     }
 
+    // method for my random order constructor
     public String toString() {
         String returnString = "Your Randomized Boba Order: " + drink + " with " + topping;
         return returnString;
