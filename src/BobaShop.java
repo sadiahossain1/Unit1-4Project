@@ -44,7 +44,7 @@ public class BobaShop {
     // void method with no parameters which allows user to add toppings if they want
     public void addToppings() {
         Scanner scan = new Scanner(System.in);
-        System.out.print("The drink you want is " + drink +"\nWhat toppings do you want to add to your personalized order? (If no toppings, type N/A): ");
+        System.out.print("The personal drink you want is " + drink +"\nWhat toppings do you want to add to your personalized order? (If no toppings, type N/A): ");
         topping = scan.nextLine();
     }
 
@@ -104,9 +104,9 @@ public class BobaShop {
                 count++;
             }
             if ((guess.equals(originalWord)) && (count <= 5)) {
-                System.out.println("You won a 50% discount!");
-                System.out.println("The new price of your random order is: $" + price1/2.0);
-                System.out.println("The new price of your personal order is: $" + price2/2.0);
+                System.out.println("You won a 50% discount!" +
+                        "\nThe new price of your random order is: $" + price1/2.0 +
+                        "\nThe new price of your personal order is: $" + price2/2.0);
             } else {
                 System.out.println("You lost :(");
             }
