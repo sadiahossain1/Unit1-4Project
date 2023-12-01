@@ -12,6 +12,7 @@ public class BobaShop {
     // constructor
     public BobaShop(String drink) {
         this.drink = drink;
+        System.out.println(toString());
     }
 
     // overloaded constructor
@@ -44,7 +45,7 @@ public class BobaShop {
     // void method with no parameters which allows user to add toppings if they want
     public void addToppings() {
         Scanner scan = new Scanner(System.in);
-        System.out.print("The personal drink you want is " + drink +"\nWhat toppings do you want to add to your personalized order? (If no toppings, type N/A): ");
+        System.out.print("What toppings do you want to add to your personalized order? (If no toppings, type N/A): ");
         topping = scan.nextLine();
     }
 
@@ -117,7 +118,11 @@ public class BobaShop {
 
     // method for my random order constructor
     public String toString() {
-        String returnString = "Your Randomized Boba Order: " + drink + " with " + topping;
-        return returnString;
+        if (randomBoba) {
+            String returnString = "Your Randomized Boba Order: " + drink + " with " + topping;
+            return returnString;
+        } else {
+            return "The personal drink you want is " + drink;
+        }
     }
 }
